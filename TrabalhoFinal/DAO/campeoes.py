@@ -1,4 +1,4 @@
-from model.campeoes import Campeao
+from model import Campeao
 from database import db
 
 class CampeaoDAO:

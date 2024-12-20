@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
 </head>
 <body>
-    <form id="register-form" action="{{ url_for('user.add_user') }}" method="post">
+    <form id="register-form" action='/TrabalhoFinal/controller/user.py' method="post">
         <input type="text" id="register-nome" name="register-nome" placeholder="Nome" required>
         <input type="email" id="register-email" name="register-email" placeholder="Email" required>
         <input type="password" id="register-password" name="register-senha" placeholder="Senha" required>

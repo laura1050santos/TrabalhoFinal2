@@ -11,6 +11,7 @@ def index():
 
 @userController.route('/add_user',  methods=['GET', 'POST'])
 def add_user():
+    print('aaaa')
     if request.method == 'POST':
         nome = request.form.get('register-nome')
         email = request.form.get('register-email')

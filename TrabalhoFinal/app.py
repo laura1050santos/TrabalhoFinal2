@@ -1,7 +1,7 @@
 from flask import Flask
 from database import init_app
-from controller.campeoes import campeoesController
-from controller.user import userController
+from controller import campeoesController,userController
+
 app=Flask(__name__)
 
 app.secret_key = 'Chave_mega_secreta' 

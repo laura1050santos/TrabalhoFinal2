@@ -2,8 +2,8 @@
 from flask import Flask, render_template, Blueprint, redirect, url_for,request
 from flask_sqlalchemy import SQLAlchemy
 from database import init_app, db
-from DAO.campeoes import *
-from repository.campeaoRepository import CampeaoRepository
+from DAO import *
+from repository import CampeaoRepository
 
 campeoes_repository = CampeaoRepository()
 
