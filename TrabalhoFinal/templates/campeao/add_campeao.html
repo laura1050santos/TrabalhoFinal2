@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Campeão</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+<body>
+    <h1>Adicionar Campeão</h1>
+    <form id="add" action="/add_campeao" method="POST">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="dificuldade">Dificuldade</label>
+        <input type="text" id="dificuldade" name="dificuldade" required>
+
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
