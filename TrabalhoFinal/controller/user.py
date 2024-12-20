@@ -29,12 +29,13 @@ def get_users():
     return render_template('/user/cadastro_user.html', users=users)
 
 
-@@userController.route('/ver-user', methods=['GET'])
+@@userController.route('/ver-user', methods=['GET', 'POST'])
 def ver_user():
   if request.method == 'POST':
     id=request.form.get("id_usuario)
     user = user_repository.get_by_id_user(id)
-    return render_template('/user/lista_usuarios.html', user=user)
+    return render_template('/user/get_by_id_user.html', user=user)
+ return render_template('/user/get_by_id_user.html')
 
 
 @userController.route('/update_user/', methods=['POST', 'GET'])
