@@ -17,12 +17,12 @@ def ver_campeoes():
     print("controllert")
     campeoes = campeoes_repository.get_all_campeoes()
     print('indo pro rendertemplate')
-    return render_template('get_all_campeao.html', campeoes=campeoes)
+    return render_template('/campeao/get_all_campeao.html', campeoes=campeoes)
 
 @campeoesController.route('/get_id/<int:id_campeao>', methods=['GET'])
 def ver_id(id_campeao):
     campeao = campeoes_repository.get_campeao_by_id(id_campeao)
-    return render_template("get_id_campeao.html", campeao=campeao)
+    return render_template("/campeao/get_id_campeao.html", campeao=campeao)
 
 
 @campeoesController.route('/add_campeao',methods=['POST', 'GET'])
@@ -32,7 +32,7 @@ def add_campeao():
         dificuldade = request.form.get('dificuldade')
         campeoes_repository.create_campeao(nome,dificuldade) #chama a função do repository que 
         return redirect(url_for('campeao.ver_campeoes'))
-    return render_template('add_campeao.html')
+    return render_template('/campeao/add_campeao.html')
 
     
 @campeoesController.route('/update_campeao/<int:id_campeao>',methods=['POST','PUT', 'GET'])
@@ -42,7 +42,7 @@ def update_campeao(id_campeao):
         dificuldade = request.form.get('dificuldade')
         campeoes_repository.update_campeao(id_campeao,nome,dificuldade) #chama a função do repository que 
         return redirect(url_for('campeao.update_campeoes'))
-    return render_template('update_campeao.html')
+    return render_template('/campeao/update_campeao.html')
 
 
 @campeoesController.route('/delete_campeao',methods=['DELETE', 'GET'])
@@ -52,4 +52,4 @@ def delete_campeao(id_campeao):
         campeao = campeoes_repository.get_campeao_by_id(id)
         campeoes_repository.delete_campeao(campeao)
         return redirect(url_for('campeao.delete_campeoes'))
-    return render_template('delete_campeao.html')
+    return render_template('/campeao/delete_campeao.html')
