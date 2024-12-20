@@ -9,6 +9,9 @@ class UserRepository:
     
     def get_user_by_id(self, id_user):
         return self.userDAO.get_user(id_user)
+    
+    def get_user_by_email(self, email):
+        return self.userDAO.get_user(email)
 
     def create_user(self, nome, email, senha,confirmar_senha):
         if len(nome) < 3:

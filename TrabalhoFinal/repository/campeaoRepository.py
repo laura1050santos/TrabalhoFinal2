@@ -14,6 +14,8 @@ class CampeaoRepository:
 
     def create_campeao(self, nome, dificuldade):
     #funcao, classe, regiao   
+        if not nome or dificuldade:
+            print("estão faltando informações", "erro")
         return self.campeaoDAO.add_Campeao(nome, dificuldade  )  
         #funcao, classe, regiao   
     def update_campeao(self, id_campeao, nome, dificuldade):

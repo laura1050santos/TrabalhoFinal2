@@ -3,8 +3,12 @@ from database import db
 
 class UserDAO:
     @staticmethod
-    def get_user(id_user):
+    def get_user_by_id(id_user):
         return User.query.get(id_user)
+    
+    @staticmethod
+    def get_user_by_email(email):
+        return User.query.get(email)
     
     @staticmethod
     def get_all_user():

@@ -1,19 +1,17 @@
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
 </head>
-
 <body>
-    <form id="register-form">
+    <form id="register-form" action="/TrabalhoFinal/controller/login.py" method="get">
         <input type="text" id="register-nome" placeholder="Nome" required>
         <input type="email" id="register-email" placeholder="Email" required>
         <input type="password" id="register-password" placeholder="Senha" required>
         <button type="submit">Cadastrar</button>
     </form>
 </body>
-
 </html>
