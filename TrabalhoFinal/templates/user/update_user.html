@@ -7,15 +7,24 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
 </head>
 <body>
-    <h1>Atualizar Campeão</h1>
+    <h1>Atualizar usuário </h1>
     <form id="update" action="/update_user" method="POST">
         <label for="nome">Nome</label>
         <input type="text" id="nome" name="nome" required>
 
-        <label for="dificuldade">Dificuldade</label>
-        <input type="text" id="dificuldade" name="dificuldade" required>
+        <label for="email">Dificuldade</label>
+        <input type="text" id="email" required>
 
         <button type="submit">Enviar</button>
     </form>
+{% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li style="color: {{ 'red' if category == 'error' else 'green' }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
 </body>
 </html>
