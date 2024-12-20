@@ -6,6 +6,29 @@
     <title>mostrar todos os usuarios</title>
 </head>
 <body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Dificuldade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.id_usuario }}</td>
+                <td>{{ usuario. nome}}</td>
+                <td>{{ usuario.email }}</td>
+
+            </tr>
+            {% endfor %}
+            {% if not usuarios %}
+                <p>Nenhum usuário encontrado.</p>
+            {% endif %}
+
+        </tbody>
+    </table>
 {% with messages = get_flashed_messages(with_categories=True) %}
       {% if messages %}
         <ul>
