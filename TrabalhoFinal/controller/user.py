@@ -29,6 +29,14 @@ def get_users():
     return render_template('/user/cadastro_user.html', users=users)
 
 
+@@userController.route('/ver-user', methods=['GET'])
+def ver_user():
+  if request.method == 'POST':
+    id=request.form.get("id_usuario)
+    user = user_repository.get_by_id_user(id)
+    return render_template('/user/lista_usuarios.html', user=user)
+
+
 @userController.route('/update_user/', methods=['POST', 'GET'])
 def update_user():
     if request.method == 'POST':
@@ -67,6 +75,3 @@ def page_not_found(e):
 def page_not_found(e):
     return render_template('500.html'), 500
 @userController.route('/ver-user')
-def ver_user():
-    user = user_repository.get_all_user()
-    return render_template('/user/lista_usuarios.html', user=user)
