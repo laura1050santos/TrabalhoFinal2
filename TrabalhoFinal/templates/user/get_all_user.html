@@ -6,6 +6,15 @@
     <title>mostrar todos os usuarios</title>
 </head>
 <body>
+{% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li style="color: {{ 'red' if category == 'error' else 'green' }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
     
 </body>
 </html>
