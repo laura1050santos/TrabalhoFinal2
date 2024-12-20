@@ -9,15 +9,15 @@ userController = Blueprint("user", __name__)
 def index():
     return render_template("index.html")
 
-@userController.route('/add_user', methods=[ 'GET'])
+@userController.route('/add_user',  methods=['GET', 'POST'])
 def add_user():
-    if request.method == 'GET':
+    if request.method == 'POST':
         nome = request.form.get('register-nome')
         email = request.form.get('register-email')
         senha = request.form.get('register-senha')
         confirmar_senha = request.form.get('confirmar-senha')
-        user_repository.create_user(nome, email, senha,confirmar_senha)
-        return render_template('/user/cadastro_user.html' , mensagem="add feito com sucesso")
+        mensagem = user_repository.create_user(nome, email, senha,confirmar_senha)
+        return render_template('/user/cadastro_user.html' , mensagem=mensagem)
     print('indo pro return')
     return render_template('/user/cadastro_user.html' )
 
@@ -25,24 +25,29 @@ def add_user():
 @userController.route('/ver-todos', methods=['GET'])
 def get_users():
     users = user_repository.get_all_users()
-    return render_template('/user/cadastro_user.html')
+    return render_template('/user/cadastro_user.html', users=users)
 
 
-@userController.route('/user/update_user/', methods=['POST','GET'])
+@userController.route('/update_user/', methods=['POST', 'GET'])
 def update_user():
-    id_user = request.get('id_user')
-    nome = request.get('name')
-    email = request.get('email')
-    updated_user = user_repository.update_user(id_user, nome, email)
-    if updated_user:
-        return render_template('/user/get_all_user.html', mensagem= 'add com sucesso');
+    if request.method == 'POST':
+        id_user = request.form.get('id_user')
+        nome = request.form.get('name')
+        email = request.form.get('email')
+        senha = request.form.get('senha')
+        updated_user = user_repository.update_user(id_user, nome, email, senha)
+        if updated_user:
+            return render_template('/user/get_all_user.html', mensagem='Atualizado com sucesso')
     return render_template('/user/update_user.html')
 
+
 @userController.route('/delete_user', methods=['GET'])
-def delete_user(id_user):
-    deleted_user = user_repository.delete_user(id_user)
-    if deleted_user:
-        return render_template('/user/get_all_user.html')
+def delete_user():
+    if request.method == 'POST':
+        id_user = request.get('id_user')
+        deleted_user = user_repository.delete_user(id_user)
+        if deleted_user:
+            return render_template('/user/get_all_user.html')
     return render_template('/user/delete_user.html')
 
 @userController.errorhandler(404) #erro de pagina não encontrada

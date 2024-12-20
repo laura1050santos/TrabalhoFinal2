@@ -49,6 +49,3 @@ class UserDAO:
             db.session.rollback()
             return e
 
-    @staticmethod
-    def get_user_email(email):
-        return User.query.get(email)

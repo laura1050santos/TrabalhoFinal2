@@ -19,7 +19,7 @@ def login():
         usuario= userrepository.get_user_by_email(email)
         if email and senha == usuario.senha:
             session['id_user']= usuario.id
-            session['nome'] = usuario.nome
+            session['nome']=usuario.nome
             return redirect(url_for("index.html", usuario=usuario))
         else:
             flash("tente novamente", 'info')   

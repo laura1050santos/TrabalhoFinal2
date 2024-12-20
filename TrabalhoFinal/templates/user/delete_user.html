@@ -8,11 +8,11 @@
 </head>
 <body>
     <h1>Deletar CampeÃ£o</h1>
-    <form id="delete" action="/delete_user" method="DELETE">
-        <label for="id_user">ID</label>
-        <input type="number" id="id_user" name="id_user" required>
-
-        <button type="submit">Enviar</button>
+    <form action="/delete_user" method="POST">
+        <label for="id_user">ID do Usuário:</label>
+        <input type="text" id="id_user" name="id_user" required>
+        <button type="submit">Excluir Usuário</button>
     </form>
+    
 </body>
 </html>
