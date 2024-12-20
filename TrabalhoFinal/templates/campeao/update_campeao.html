@@ -7,8 +7,17 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
 </head>
 <body>
+    <header>
+        <a href="/add_campeao">Adicionar Campe천es</a>
+        <a href="/get_all_campeao">Lista Campe천es</a>
+        <a href="/update_campeao">Atualizar Campe천es</a>
+        <a href="/delete_campeao">Deletar Campe천es</a>
+    </header>
     <h1>Atualizar Campeão</h1>
     <form id="update" action="/update_campeao" method="POST">
+        <label for="id_campeao"> ID do campeao</label>
+        <input type="text" id="id_campeao" name="nome" required>
+
         <label for="nome">Nome</label>
         <input type="text" id="nome" name="nome" required>
 

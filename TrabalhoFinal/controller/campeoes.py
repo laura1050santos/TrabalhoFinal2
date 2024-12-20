@@ -14,13 +14,12 @@ def index():
 
 @campeoesController.route('/ver-campeoes', methods=['GET'])
 def ver_campeoes():
-    print("controllert")
     campeoes = campeoes_repository.get_all_campeoes()
-    print('indo pro rendertemplate')
     return render_template('/campeao/get_all_campeao.html', campeoes=campeoes)
 
-@campeoesController.route('/get_id/<int:id_campeao>', methods=['GET'])
-def ver_id(id_campeao):
+@campeoesController.route('/get_id/', methods=['GET'])
+def ver_id():
+    id_campeao = request.form.get('id_campeao')
     campeao = campeoes_repository.get_campeao_by_id(id_campeao)
     return render_template("/campeao/get_id_campeao.html", campeao=campeao)
 
@@ -35,9 +34,10 @@ def add_campeao():
     return render_template('/campeao/add_campeao.html')
 
     
-@campeoesController.route('/update_campeao/<int:id_campeao>',methods=['POST','PUT', 'GET'])
-def update_campeao(id_campeao):
+@campeoesController.route('/update_campeao',methods=['POST','PUT', 'GET'])
+def update_campeao():
     if request.method == 'PUT':
+        id_campeao = request.form.get('id_campeao')
         nome = request.form.get('nome')
         dificuldade = request.form.get('dificuldade')
         campeoes_repository.update_campeao(id_campeao,nome,dificuldade) #chama a função do repository que 
@@ -45,7 +45,7 @@ def update_campeao(id_campeao):
     return render_template('/campeao/update_campeao.html')
 
 
-@campeoesController.route('/delete_campeao',methods=['DELETE', 'GET'])
+@campeoesController.route('/delete_campeao',methods=['DELETE'])
 def delete_campeao():
     if request.method == 'DELETE':
         id_campeao = request.form.get('id_campeao')
