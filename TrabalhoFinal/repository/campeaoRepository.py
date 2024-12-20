@@ -15,7 +15,7 @@ class CampeaoRepository:
     def create_campeao(self, nome, dificuldade):
     #funcao, classe, regiao   
         if not nome or dificuldade:
-            messages="estão faltando informações", "erro"
+            flash("estão faltando informações", "erro")
              return false
         return self.campeaoDAO.add_Campeao(nome, dificuldade  )  
         #funcao, classe, regiao   
@@ -24,17 +24,18 @@ class CampeaoRepository:
 
 
         if not id_campeao or not nome or not dificuldade:
-           messages="estão faltando informações", "erro"
+           mensagem="Todos os campos são obrigatórios
            return "Erro: Todos os campos são obrigatórios", 400
-        return self.campeaoDAO.update_Campeao(id_campeao, nome, dificuldade)
+        return self.campeaoDAO.update_Campeao(id_campeao, nome, dificuldade), mensagem 
 
 
     #classe, funcao
 
     def delete_campeao(self, id_campeao):
         if not id_campeao:
-            messages="estão faltando informações", "erro"
+            messages="estão faltando informações"
+
             return "erro: id vazio",400
         self.campeaoDAO.delete_campeao(id_campeao)
-        messages="usuário deletado", "success"
-        return 
+        messages="usuário deletado"
+        return True
