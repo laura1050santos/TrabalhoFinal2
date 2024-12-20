@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deletar Campeão</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 <body>
-    <header>
-        <a href="/add_campeao">Adicionar Campeões</a>
-        <a href="/get_all_campeao">Lista Campeões</a>
-        <a href="/update_campeao">Atualizar Campeões</a>
-        <a href="/delete_campeao">Deletar Campeões</a>
-    </header>
+  <header>
+    <div class="topo">
+        <a href="/ver-campeoes">Campeões</a>
+        <a href="/get_all_user">Usuário</a>
+    </div>
+    <div class="base">
+        <a href="/add_campeao">Adicionar Campeoes</a>
+        <a href="/ver-campeoes">Lista Campeoes</a>
+        <a href="/update_campeao">Atualizar Campeoes</a>
+        <a href="/delete_campeao">Deletar Campeoes</a>
+    </div>
+</header>
     <h1>Deletar Campeão</h1>
     <form id="delete" action="/delete_campeao" method="POST">
         <label for="id_campeao">ID</label>
@@ -24,7 +30,7 @@
       {% if messages %}
         <ul>
           {% for category, message in messages %}
-            <li style="color: {{ 'red' if category == 'error' else 'green' }}">{{ message }}</li>
+            <li >{{ message }}</li>
           {% endfor %}
         </ul>
       {% endif %}
