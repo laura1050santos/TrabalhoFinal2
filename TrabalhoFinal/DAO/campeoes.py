@@ -23,12 +23,12 @@ class CampeaoDAO:
             return e 
             
     @staticmethod
-    def delete_Campeao(id):
+    def delete_campeao(id):
         try:
             campeao = CampeaoDAO.get_Campeao(id)
             db.session.delete(campeao)
             db.session.commit()
-            return True,campeao
+            return True
         except Exception as e:
             db.session.rollback()
             return e 

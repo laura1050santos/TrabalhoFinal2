@@ -40,20 +40,17 @@ def update_campeao():
         id_campeao = request.form.get('id_campeao')
         nome = request.form.get('nome')
         dificuldade = request.form.get('dificuldade')
-
-        if not id_campeao or not nome or not dificuldade:
-           return "Erro: Todos os campos são obrigatórios", 400
-        
         campeoes_repository.update_campeao(id_campeao, nome, dificuldade)
         return redirect(url_for('campeao.ver_campeoes'))
 
     return render_template('/campeao/update_campeao.html')
 
-@campeoesController.route('/delete_campeao',methods=['DELETE'])
+@campeoesController.route('/delete_campeao',methods=['POST', 'GET'])
 def delete_campeao():
-    if request.method == 'DELETE':
+    if request.method == 'POST':
         id_campeao = request.form.get('id_campeao')
-        campeao = campeoes_repository.get_campeao_by_id(id_campeao=id_campeao)
+
+        campeao = campeoes_repository.get_campeao_by_id(id_campeao)
         campeoes_repository.delete_campeao(campeao)
         return redirect(url_for('campeao.ver_campeoes'))
     return render_template('/campeao/delete_campeao.html')
