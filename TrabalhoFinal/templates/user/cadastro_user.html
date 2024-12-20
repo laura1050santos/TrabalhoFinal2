@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,6 +13,14 @@
         <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Confirmar Senha" required>
         <button type="submit">Cadastrar</button>
     </form>
-    
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li style="color: {{ 'red' if category == 'error' else 'green' }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
 </body>
 </html>
